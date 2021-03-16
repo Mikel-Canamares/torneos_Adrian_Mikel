@@ -25,6 +25,10 @@ public class CiudadModel {
 	@JsonIgnoreProperties("ciudad")
 	private List<DepartamentoModel> departamentos;
 	
+	@OneToMany(mappedBy = "ciudad")
+	@JsonIgnoreProperties("ciudad")
+	private List<TorneoModel> torneos;
+	
 	
 
 //	GETTERS AND SETTERS
@@ -50,6 +54,14 @@ public class CiudadModel {
 
 	public void setDepartamentos(List<DepartamentoModel> departamentos) {
 		this.departamentos = departamentos;
+	}
+
+	public List<TorneoModel> getTorneos() {
+		return torneos;
+	}
+
+	public void setTorneos(List<TorneoModel> torneos) {
+		this.torneos = torneos;
 	}
 
 	

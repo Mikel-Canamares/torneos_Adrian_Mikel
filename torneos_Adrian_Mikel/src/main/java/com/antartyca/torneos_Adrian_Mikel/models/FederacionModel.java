@@ -33,10 +33,9 @@ public class FederacionModel {
 	@JsonIgnoreProperties("federacion")
 	private List<DepartamentoModel> departamentos;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="id_torneo")
-	@JsonIgnoreProperties("torneos")
-	private TorneoModel torneo;
+	@OneToMany(mappedBy = "federacion")
+	@JsonIgnoreProperties("federacion")
+	private  List<TorneoModel> torneos;
 	
 //	GETTERS AND SETTERS
 	public Integer getId_federacion() {
@@ -79,13 +78,15 @@ public class FederacionModel {
 		this.departamentos = departamentos;
 	}
 
-	public TorneoModel getTorneo() {
-		return torneo;
+	public List<TorneoModel> getTorneos() {
+		return torneos;
 	}
 
-	public void setTorneo(TorneoModel torneo) {
-		this.torneo = torneo;
+	public void setTorneos(List<TorneoModel> torneos) {
+		this.torneos = torneos;
 	}
+
+
 	
 	
 }

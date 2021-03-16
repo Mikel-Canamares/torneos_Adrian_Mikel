@@ -8,88 +8,77 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="Departamentos")
-public class DepartamentoModel {
+@Table(name = "TORNEOS")
+public class TorneoModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cod_departamento;
+	private Integer id_torneo;
 	
-	private String nombre;
+	private  String nombre;
 	
-	private String descripcion;
+	private  String descripcion;
+	
+	@ManyToMany(mappedBy = "torneos")
+	private List<EquipoModel> equipos;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="id_federacion")
-	@JsonIgnoreProperties("departamentos")
+	@JoinColumn(name = "id_torneo")
+	@JsonIgnoreProperties("torneos")
 	private FederacionModel federacion;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="cod_ciudad")
-	@JsonIgnoreProperties("departamentos")
+	@JoinColumn(name = "cod_ciudad")
+	@JsonIgnoreProperties("torneos")
 	private CiudadModel ciudad;
 	
-	@OneToMany(mappedBy = "departamento")
-	@JsonIgnoreProperties("departamento")
-	private List<EmpleadoModel> empleados;
-
 	
-//	GETTERS AND SETTERS
-	public Integer getCod_departamento() {
-		return cod_departamento;
+	
+	public Integer getId_torneo() {
+		return id_torneo;
 	}
-
-	public void setCod_departamento(Integer cod_departamento) {
-		this.cod_departamento = cod_departamento;
+	public void setId_torneo(Integer id_torneo) {
+		this.id_torneo = id_torneo;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
+	public List<EquipoModel> getEquipos() {
+		return equipos;
+	}
+	public void setEquipos(List<EquipoModel> equipos) {
+		this.equipos = equipos;
+	}
 	public FederacionModel getFederacion() {
 		return federacion;
 	}
-
 	public void setFederacion(FederacionModel federacion) {
 		this.federacion = federacion;
 	}
-
 	public CiudadModel getCiudad() {
 		return ciudad;
 	}
-
 	public void setCiudad(CiudadModel ciudad) {
 		this.ciudad = ciudad;
 	}
+	
+	
+	
 
-	public List<EmpleadoModel> getEmpleados() {
-		return empleados;
-	}
-
-	public void setEmpleados(List<EmpleadoModel> empleados) {
-		this.empleados = empleados;
-	}
-	
-	
-	
 }
