@@ -30,7 +30,7 @@ public class TorneoModel {
 	private List<EquipoModel> equipos;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_torneo")
+	@JoinColumn(name = "id_federacion")
 	@JsonIgnoreProperties("torneos")
 	private FederacionModel federacion;
 	

@@ -40,17 +40,6 @@ public class EquipoModel {
 	private List<TorneoModel> torneos;
 	
 	
-	@ManyToOne
-	@JoinColumn(name = "cod_ciudad")
-	@JsonIgnoreProperties("torneos")
-	private CiudadModel ciudad;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_federacion")
-	@JsonIgnoreProperties("torneos")
-	private FederacionModel federacion;
-	
-	
 	public Integer getId_equipo() {
 		return id_equipo;
 	}
@@ -87,20 +76,5 @@ public class EquipoModel {
 	public void setTorneos(List<TorneoModel> torneos) {
 		this.torneos = torneos;
 	}
-	public CiudadModel getCiudad() {
-		return ciudad;
-	}
-	public void setCiudad(CiudadModel ciudad) {
-		this.ciudad = ciudad;
-	}
-	public FederacionModel getFederacion() {
-		return federacion;
-	}
-	public void setFederacion(FederacionModel federacion) {
-		this.federacion = federacion;
-	}
-	
-	
-	
 	
 }

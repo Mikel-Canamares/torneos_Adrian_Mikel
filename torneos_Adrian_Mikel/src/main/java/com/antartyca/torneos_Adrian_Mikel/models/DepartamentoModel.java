@@ -74,14 +74,14 @@ public class DepartamentoModel {
 		this.federacion = federacion;
 	}
 
-	public CiudadModel getCiudad() {
-		return ciudad;
-	}
-
-	public void setCiudad(CiudadModel ciudad) {
-		this.ciudad = ciudad;
-	}
-
+//	public CiudadModel getCiudad() {
+//		return ciudad;
+//	}
+//
+//	public void setCiudad(CiudadModel ciudad) {
+//		this.ciudad = ciudad;
+//	}
+//
 	public List<EmpleadoModel> getEmpleados() {
 		return empleados;
 	}
