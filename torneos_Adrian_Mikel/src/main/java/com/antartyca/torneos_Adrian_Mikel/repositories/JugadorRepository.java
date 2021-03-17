@@ -5,7 +5,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.antartyca.torneos_Adrian_Mikel.models.JugadorModel;
 
+<<<<<<< HEAD
 
+=======
+@Repository
+>>>>>>> 594de72 (errores de repositorios corregidos)
 public interface JugadorRepository extends JpaRepository<JugadorModel, Integer>{
 
 }
