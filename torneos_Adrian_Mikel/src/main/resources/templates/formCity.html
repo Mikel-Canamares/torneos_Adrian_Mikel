@@ -8,6 +8,8 @@
 </head>
 <body>
 
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">Spring Boot</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -37,34 +39,37 @@
 
 
 
-<div class="container">
-		<h1
-			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
-			th:text="${titulo}"></h1>
-		<p><a th:href="@{/formTeam}" class="btn btn-success btn-xs">crear equipo</a></p>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>id</th>
-					<th>Nombre</th>
-					<th>Dirección</th>
-					<th>Fecha de fundación</th>
-					<th>editar</th>
-					<th>eliminar</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="equipo: ${equipos}">
-					<td th:text="${equipo.id_equipo}"></td>
-					<td th:text="${equipo.nombre}"></td>
-					<td th:text="${equipo.direccion}"></td>
-					<td th:text="${equipo.fecha_fundacion}"></td> 
-					<td><a class="btn btn-primary btn-xs" th:href="@{/formTeam/} + ${equipo.id_equipo}" th:text="'editar'"></a></td>
-					<td><a class="btn btn-danger btn-xs" th:href="@{/deleteTeam/} + ${equipo.id_equipo}" th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres eliminar?');"></a></td>
-				</tr>
-			</tbody>
 
-		</table>
+
+<div class="container">
+		<h1 th:text="${titulo}"
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+
+		<div th:object="${ciudad}" th:remove="tag">
+			<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+				<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+			</ul>
+		</div>
+		<form th:action="@{/formCity}" th:object="${ciudad}" method="post">
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Nombre</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{nombre}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+				</div>
+			</div>
+			<input type="hidden" th:field="*{cod_ciudad}" />
+
+			
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<input type="submit" value="Crear ciudad" class="btn btn-primary" />
+				</div>
+			</div>
+
+		</form>
 	</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
