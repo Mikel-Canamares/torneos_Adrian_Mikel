@@ -41,26 +41,22 @@
 		<h1
 			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
 			th:text="${titulo}"></h1>
-		<p><a th:href="@{/formTeam}" class="btn btn-success btn-xs">crear equipo</a></p>
+		<p><a th:href="@{/formCity}" class="btn btn-success btn-xs">crear ciudad</a></p>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>id</th>
 					<th>Nombre</th>
-					<th>Dirección</th>
-					<th>Fecha de fundación</th>
 					<th>editar</th>
 					<th>eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="equipo: ${equipos}">
-					<td th:text="${equipo.id_equipo}"></td>
-					<td th:text="${equipo.nombre}"></td>
-					<td th:text="${equipo.direccion}"></td>
-					<td th:text="${equipo.fecha_fundacion}"></td> 
-					<td><a class="btn btn-primary btn-xs" th:href="@{/formTeam/} + ${equipo.id_equipo}" th:text="'editar'"></a></td>
-					<td><a class="btn btn-danger btn-xs" th:href="@{/deleteTeam/} + ${equipo.id_equipo}" th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres eliminar?');"></a></td>
+				<tr th:each="ciudad: ${ciudades}">
+					<td th:text="${ciudad.cod_ciudad}"></td>
+					<td th:text="${ciudad.nombre}"></td>
+					<td><a class="btn btn-primary btn-xs" th:href="@{/formCity/} + ${ciudad.cod_ciudad}" th:text="'editar'"></a></td>
+					<td><a class="btn btn-danger btn-xs" th:href="@{/deleteCity/} + ${ciudad.cod_ciudad}" th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres eliminar?');"></a></td>
 				</tr>
 			</tbody>
 
