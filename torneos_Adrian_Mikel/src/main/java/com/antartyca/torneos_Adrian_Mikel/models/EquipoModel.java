@@ -41,11 +41,15 @@ public class EquipoModel implements Serializable{
 	@JsonIgnoreProperties("equipo")
 	private List<JugadorModel> jugadores;
 	
-	@ManyToMany
-	@JoinTable(name = "participa",
-	joinColumns = @JoinColumn(name = "id_equipo"),
-	inverseJoinColumns = @JoinColumn(name= "id_torneo"))
+//	@ManyToMany
+//	@JoinTable(name = "participa",
+//	joinColumns = @JoinColumn(name = "id_equipo"),
+//	inverseJoinColumns = @JoinColumn(name= "id_torneo"))
+//	private List<TorneoModel> torneos;
+	
+	@ManyToMany(mappedBy = "equipos")
 	private List<TorneoModel> torneos;
+	
 	
 	
 	public Integer getId_equipo() {

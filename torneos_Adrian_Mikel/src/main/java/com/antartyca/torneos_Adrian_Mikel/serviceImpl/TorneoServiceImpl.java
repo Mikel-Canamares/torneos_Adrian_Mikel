@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.antartyca.torneos_Adrian_Mikel.models.EquipoModel;
 import com.antartyca.torneos_Adrian_Mikel.models.TorneoModel;
 
 import com.antartyca.torneos_Adrian_Mikel.repositories.TorneoRepository;
@@ -41,6 +41,13 @@ public class TorneoServiceImpl implements ITorneoService{
 		torneoRepo.deleteById(id);
 		
 	}
+
+
+//	@Override
+//	public void saveAllEquipos(List<EquipoModel> equipos) {
+//		torneoRepo.saveAll(equipos);
+//		
+//	}
 
 
 

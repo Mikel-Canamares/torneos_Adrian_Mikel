@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -27,8 +28,16 @@ public class TorneoModel  implements Serializable{
 	
 	private  String descripcion;
 	
-	@ManyToMany(mappedBy = "torneos")
+	
+//	@ManyToMany(mappedBy = "torneos")
+//	private List<EquipoModel> equipos;
+	
+	@ManyToMany
+	@JoinTable(name = "participan",
+	joinColumns = @JoinColumn(name= "id_torneo"),
+	inverseJoinColumns = @JoinColumn(name = "id_equipo"))
 	private List<EquipoModel> equipos;
+	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_federacion")
@@ -78,6 +87,7 @@ public class TorneoModel  implements Serializable{
 	public void setCiudad(CiudadModel ciudad) {
 		this.ciudad = ciudad;
 	}
+
 	
 	
 	
