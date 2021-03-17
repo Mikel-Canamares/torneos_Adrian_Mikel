@@ -83,6 +83,7 @@
 						th:if="${#fields.hasErrors('equipo')}" th:errors="*{equipo}"></small>
 				</div>
 			</div>
+			<input type="hidden" th:field="*{id_jugador}" /> 
 
 			<div class="form-group row">
 				<div class="col-sm-6">

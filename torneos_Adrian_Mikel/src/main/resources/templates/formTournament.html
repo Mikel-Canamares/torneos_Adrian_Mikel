@@ -37,12 +37,12 @@
 		<h1 th:text="${titulo}"
 			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
 
-		<div th:object="${equipo}" th:remove="tag">
+		<div th:object="${torneo}" th:remove="tag">
 			<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
 				<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
 			</ul>
 		</div>
-		<form th:action="@{/formTeam}" th:object="${equipo}" method="post">
+		<form th:action="@{/formTournament}" th:object="${torneo}" method="post">
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Nombre</label>
 				<div class="col-sm-6">
@@ -55,31 +55,43 @@
 			
 			
 				<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Direccion</label>
+				<label class="col-sm-2 col-form-label">Descripcion</label>
 				<div class="col-sm-6">
-					<input type="text" th:field="*{direccion}" class="form-control"
+					<input type="text" th:field="*{descripcion}" class="form-control"
 						th:errorclass="'form-control alert-danger'" /> <small
 						class="form-text text-danger"
-						th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
+						th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
 				</div>
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Fecha fundación</label>
+				<label class="col-sm-2 col-form-label">Cod Ciudad</label>
 				<div class="col-sm-6">
-					<input type="text" th:field="*{fecha_fundacion}" class="form-control"
+					<input type="text" th:field="*{ciudad}" class="form-control"
 						th:errorclass="'form-control alert-danger'" /> <small
 						class="form-text text-danger"
-						th:if="${#fields.hasErrors('fecha_fundacion')}" th:errors="*{fecha_fundacion}"></small>
+						th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></small>
 				</div>
 			</div>
-			<input type="hidden" th:field="*{id_equipo}" /> 
+			
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Cod Federacion</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{federacion}" class="form-control"
+						th:errorclass="'form-control alert-danger'" /> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('federacion')}" th:errors="*{federacion}"></small>
+				</div>
+			</div>
+			
+			
+			<input type="hidden" th:field="*{id_torneo}" /> 
 		
 			
 			
 			<div class="form-group row">
 				<div class="col-sm-6">
-					<input type="submit" value="Crear equipo" class="btn btn-primary" />
+					<input type="submit" value="Crear torneo" class="btn btn-primary" />
 				</div>
 			</div>
 
