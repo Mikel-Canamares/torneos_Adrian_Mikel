@@ -1,5 +1,6 @@
 package com.antartyca.torneos_Adrian_Mikel.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -14,19 +15,26 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "EQUIPOS")
-public class EquipoModel {
+@Table(name = "equipo")
+public class EquipoModel implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_equipo;
+	private int id_equipo;
 	
 	private String nombre;
 	private String direccion;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="dd-MM-yyyy")
 	private Date  fecha_fundacion;
 	
 	@OneToMany(mappedBy = "equipo")
@@ -58,6 +66,7 @@ public class EquipoModel {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+	
 	public Date getFecha_fundacion() {
 		return fecha_fundacion;
 	}
@@ -76,5 +85,11 @@ public class EquipoModel {
 	public void setTorneos(List<TorneoModel> torneos) {
 		this.torneos = torneos;
 	}
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	private static final long serialVersionUID = 1L;
 	
 }

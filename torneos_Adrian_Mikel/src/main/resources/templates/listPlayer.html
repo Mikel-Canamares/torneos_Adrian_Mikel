@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}">Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Spring Boot</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link" th:href="@{/}">Home
+				</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listTeam}">Equipos</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listPlayer}">Jugadores</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+		<h1
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+			th:text="${titulo}"></h1>
+		<p><a th:href="@{/formPlayer}" class="btn btn-success btn-xs">crear jugador</a></p>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>DNI</th>
+					<th>Nombre</th>
+					<th>Telefono</th>
+					<th>Puesto</th>
+					<th>ID Equipo</th>
+					<th>editar</th>
+					<th>eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="jugador: ${jugadores}">
+					<td th:text="${jugador.id_jugador}"></td>
+					<td th:text="${jugador.dni}"></td>
+					<td th:text="${jugador.nombre}"></td>
+					<td th:text="${jugador.telefono}"></td>
+					<td th:text="${jugador.puesto}"></td>
+					<td th:text="${jugador.equipo.id_equipo}"></td>
+					<td><a class="btn btn-primary btn-xs" th:href="@{/formPlayer/} + ${jugador.id_jugador}" th:text="'editar'"></a></td>
+					<td><a class="btn btn-danger btn-xs" th:href="@{/deletePlayer/} + ${jugador.id_jugador}" th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres eliminar?');"></a></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+	
+</body>
+</html>

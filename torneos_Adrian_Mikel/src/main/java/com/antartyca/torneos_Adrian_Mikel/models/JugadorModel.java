@@ -1,7 +1,11 @@
 package com.antartyca.torneos_Adrian_Mikel.models;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,19 +16,23 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "JUGADORES")
-public class JugadorModel {
+@Table(name = "jugador")
+public class JugadorModel implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_jugador;
+	private int id_jugador;
+	
 	private String dni;
+	
 	private String nombre;
+	
 	private String telefono;
+	
 	private String puesto;
 	
 	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name = "id_equipo")
+	@JoinColumn(name = "id_equipo", foreignKey =  @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
 	@JsonIgnoreProperties("jugadores")
 	private EquipoModel equipo;
 	
