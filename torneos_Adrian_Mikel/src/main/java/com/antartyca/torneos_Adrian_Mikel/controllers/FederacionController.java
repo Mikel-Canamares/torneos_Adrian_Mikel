@@ -27,7 +27,7 @@ public class FederacionController {
 	
 	@RequestMapping(value = "/listFederation", method = RequestMethod.GET)
 	public  String listFederation(Model model) {
-		model.addAttribute("titulo", "Listado de federacions");
+		model.addAttribute("titulo", "Listado de federaciones");
 		model.addAttribute("federaciones", federacionService.findAll());
 		return "listFederation";
 	}
