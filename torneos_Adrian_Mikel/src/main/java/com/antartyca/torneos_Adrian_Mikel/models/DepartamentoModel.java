@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -22,15 +24,19 @@ public class DepartamentoModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cod_departamento;
 	
+	@NotEmpty
 	private String nombre;
 	
+
 	private String descripcion;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_federacion")
 	@JsonIgnoreProperties("departamentos")
 	private FederacionModel federacion;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="cod_ciudad")
 	@JsonIgnoreProperties("departamentos")

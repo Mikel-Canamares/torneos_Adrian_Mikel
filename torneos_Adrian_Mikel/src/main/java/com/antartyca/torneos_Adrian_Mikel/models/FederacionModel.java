@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,13 +24,18 @@ public class FederacionModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_federacion;
 	
+	@NotEmpty
 	private String nombre;
 	
+	@NotEmpty
 	private String cif;
 	
+	@NotEmpty
 	private String direccion;
 	
-	private Integer telefono;
+	@NotEmpty
+	@Pattern(regexp="^[0-9]*$")
+	private String telefono;
 	
 	@OneToMany(mappedBy = "federacion", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("federacion")
@@ -62,11 +70,11 @@ public class FederacionModel {
 		this.direccion = direccion;
 	}
 
-	public Integer getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(Integer telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
