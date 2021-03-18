@@ -2,13 +2,10 @@ package com.antartyca.torneos_Adrian_Mikel.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,9 +20,11 @@ public class FederacionModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_federacion;
 	
+	private String nombre;
+	
 	private String cif;
 	
-	private String Direccion;
+	private String direccion;
 	
 	private Integer telefono;
 	
@@ -55,11 +54,11 @@ public class FederacionModel {
 	}
 
 	public String getDireccion() {
-		return Direccion;
+		return direccion;
 	}
 
 	public void setDireccion(String direccion) {
-		Direccion = direccion;
+		this.direccion = direccion;
 	}
 
 	public Integer getTelefono() {
@@ -84,6 +83,14 @@ public class FederacionModel {
 
 	public void setTorneos(List<TorneoModel> torneos) {
 		this.torneos = torneos;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 

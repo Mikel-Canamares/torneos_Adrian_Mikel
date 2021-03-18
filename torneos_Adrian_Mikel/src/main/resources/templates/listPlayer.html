@@ -23,11 +23,8 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" th:href="@{/listPlayer}">Jugadores</a>
 				</li>
-<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" th:href="@{/listTournament}">Torneos</a>
 				</li>
-=======
->>>>>>> 79f9554 (Templates terminados, hay errores al acceder a formDepartment y formFederation, tambien falla al crear un empleado. Lo mirare todo esta tarde porque no doy con la solucion)
 				<li class="nav-item"><a class="nav-link" th:href="@{/listCity}">Ciudades</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" th:href="@{/listFederation}">Federaciones</a>
@@ -53,7 +50,7 @@
 					<th>Nombre</th>
 					<th>Telefono</th>
 					<th>Puesto</th>
-					<th>ID Equipo</th>
+					<th>Equipo</th>
 					<th>editar</th>
 					<th>eliminar</th>
 				</tr>
@@ -65,7 +62,7 @@
 					<td th:text="${jugador.nombre}"></td>
 					<td th:text="${jugador.telefono}"></td>
 					<td th:text="${jugador.puesto}"></td>
-					<td th:text="${jugador.equipo.id_equipo}"></td>
+					<td th:text="${jugador.equipo.nombre}"></td>
 					<td><a class="btn btn-primary btn-xs" th:href="@{/formPlayer/} + ${jugador.id_jugador}" th:text="'editar'"></a></td>
 					<td><a class="btn btn-danger btn-xs" th:href="@{/deletePlayer/} + ${jugador.id_jugador}" th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres eliminar?');"></a></td>
 				</tr>
