@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.el.stream.Stream;
 
 @Entity
 @Table(name = "TORNEOS")
@@ -48,7 +49,6 @@ public class TorneoModel  implements Serializable{
 	@JoinColumn(name = "cod_ciudad")
 	@JsonIgnoreProperties("torneos")
 	private CiudadModel ciudad;
-	
 	
 	
 	public Integer getId_torneo() {

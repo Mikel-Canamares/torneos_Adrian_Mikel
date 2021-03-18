@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}">Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Spring Boot</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link" th:href="@{/}">Home
+				</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listTeam}">Equipos</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listPlayer}">Jugadores</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listTournament}">Torneos</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listCity}">Ciudades</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listFederation}">Federaciones</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listDepartment}">Departamentos</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listEmployer}">Empleados</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+
+ <div class="container">
+        <div class="container-fluid">
+            <div class="page-header">
+                <h3 th:utext="${titulo}"></h3>
+            </div>
+            <form action="#"
+                  th:action="@{/addTeamTournament/}+${torneo.id_torneo}"
+                  enctype="multipart/form-data">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Información del torneo</div>
+                        <div class="panel-body" style="padding-left: 5px;">
+                            Nombre : <b th:utext="${torneo.nombre}"></b>
+                            <br/>
+                            Descripción : <b th:utext="${torneo.descripcion}"></b>
+                            <br/>
+                            Ciudad : <b th:utext="${torneo.ciudad.nombre}"></b>
+                            <br/>
+                            Id Federación : <b th:utext="${torneo.federacion.id_federacion}"></b>
+                            <br/>
+                            Equipos : <span th:each="equipo : ${torneo.equipos}">
+                            <br/>&nbsp;&nbsp;<b th:utext="${equipo.nombre}"></b>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-control" name="team">
+                            <option th:each="equipo : ${equipos}"
+                            th:value="${equipo.id_equipo}"
+                            th:text="${equipo.nombre}"></option>
+                        </select>
+                    </div>
+                </div>
+                <br/>
+                <button type="submit" class="btn btn-primary">
+                    Add equipo
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+
+	
+
+<!--
+
+<div class="container">
+		<h1 th:text="${titulo}"
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+
+
+		<form th:action="@{/addTeamTournament/}+${torneo.id_torneo}+@{/team}" th:object="${torneo}" > 
+	
+	<form th:action="#" th:object="${torneo}" >
+			
+			  <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Informacion del torneo</div>
+                        <div class="panel-body" style="padding-left: 5px;">
+                            Nombre : <b th:utext="${torneo.nombre}"></b>
+                            <br/>
+                            Descripción : <b th:utext="${torneo.descripcion}"></b>
+                            <br/>
+                            Ciudad : <b th:utext="${torneo.ciudad.nombre}"></b>
+                            <br/>
+                            Id Federación : <b th:utext="${torneo.federacion.id_federacion}"></b>
+                            <br/>
+                            Equipos : <span th:each="equipo : ${torneo.equipos}">
+                            <br/>&nbsp;&nbsp;<b th:utext="${equipo.nombre}"></b>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-control" name="courseId">
+                            <option th:each="equipo : ${equipos}"
+                            th:value="${equipo.id_equipo}"
+                            th:text="${equipo.nombre}"></option>
+                        </select>
+                    </div>
+                </div>
+			
+			
+			<input type="hidden" th:field="*{id_torneo}" /> 
+				
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<input type="submit" value="Crear torneo" class="btn btn-primary" />
+				</div>
+			</div>
+		</form>
+	</div>
+	-->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
