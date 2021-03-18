@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -27,12 +29,17 @@ public class JugadorModel implements Serializable{
 	@NotEmpty
 	private String dni;
 	
+	@NotEmpty
 	private String nombre;
 	
+	@NotEmpty
+	@Pattern(regexp="^[0-9]*$")
 	private String telefono;
 	
+	@NotEmpty
 	private String puesto;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "id_equipo")
 	@JsonIgnoreProperties("jugadores")

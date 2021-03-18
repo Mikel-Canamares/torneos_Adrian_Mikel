@@ -41,6 +41,8 @@ public class TorneoServiceImpl implements ITorneoService{
 		torneoRepo.deleteById(id);
 		
 	}
+	
+
 
 
 //	@Override

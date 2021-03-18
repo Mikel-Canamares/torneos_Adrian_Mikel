@@ -17,4 +17,5 @@ public interface ITorneoService {
 	
 	public void delete(Integer id);
 	
+	
 }

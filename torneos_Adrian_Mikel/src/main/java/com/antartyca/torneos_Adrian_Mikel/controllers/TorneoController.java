@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,6 +47,9 @@ public class TorneoController {
 //			nombres = nombres + equipo.getNombre();
 //		}
 //		model.addAttribute("equipos", nombres);
+		
+		String nombres = "";
+		
 		return "listTournament";
 	}
 	
@@ -60,7 +64,7 @@ public class TorneoController {
 	}
 	
 	@RequestMapping(value = "/formTournament", method = RequestMethod.POST)
-	public String saveTournament(@Valid TorneoModel torneo, BindingResult result, Model model, SessionStatus status) {
+	public String saveTournament(@Valid @ModelAttribute("torneo") TorneoModel torneo, BindingResult result, Model model, SessionStatus status) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de Torneo");
 			return "formTournament";

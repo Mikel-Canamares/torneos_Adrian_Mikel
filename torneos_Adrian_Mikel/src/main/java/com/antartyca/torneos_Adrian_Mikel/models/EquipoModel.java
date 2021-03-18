@@ -18,10 +18,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "equipo")
@@ -31,9 +33,13 @@ public class EquipoModel implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_equipo;
 	
+	@NotEmpty
 	private String nombre;
+	
+	@NotEmpty
 	private String direccion;
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	private Date  fecha_fundacion;

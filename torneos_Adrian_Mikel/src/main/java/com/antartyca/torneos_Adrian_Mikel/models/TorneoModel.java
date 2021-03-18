@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.el.stream.Stream;
@@ -25,13 +27,13 @@ public class TorneoModel  implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_torneo;
 	
+	@NotEmpty
 	private  String nombre;
+	
 	
 	private  String descripcion;
 	
 	
-//	@ManyToMany(mappedBy = "torneos")
-//	private List<EquipoModel> equipos;
 	
 	@ManyToMany
 	@JoinTable(name = "participan",
@@ -40,11 +42,13 @@ public class TorneoModel  implements Serializable{
 	private List<EquipoModel> equipos;
 	
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "id_federacion")
 	@JsonIgnoreProperties("torneos")
 	private FederacionModel federacion;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "cod_ciudad")
 	@JsonIgnoreProperties("torneos")

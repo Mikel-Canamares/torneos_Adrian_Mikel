@@ -41,11 +41,7 @@
 		<h1 th:text="${titulo}"
 			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
 
-		<div th:object="${jugador}" th:remove="tag">
-			<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
-				<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
-			</ul>
-		</div>
+	
 		<form th:action="@{/formPlayer}" th:object="${jugador}" method="post">
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">DNI</label>
