@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,7 +38,7 @@ public class EquipoModel implements Serializable{
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	private Date  fecha_fundacion;
 	
-	@OneToMany(mappedBy = "equipo")
+	@OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("equipo")
 	private List<JugadorModel> jugadores;
 	

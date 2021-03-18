@@ -31,8 +31,8 @@ public class JugadorModel implements Serializable{
 	
 	private String puesto;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name = "id_equipo", foreignKey =  @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+	@ManyToOne
+	@JoinColumn(name = "id_equipo")
 	@JsonIgnoreProperties("jugadores")
 	private EquipoModel equipo;
 	

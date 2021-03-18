@@ -115,7 +115,7 @@ public class TorneoController {
 	}
 	
 	
-	@RequestMapping(value = "/addTeamTournament/{tournamentId}/equipo.id_equipo")
+	@RequestMapping(value = "/addTeamTournament/{tournamentId}/team")
     public String addTeamTournament(@PathVariable("tournamentId") Integer tournamentId,
                                    @RequestParam("teamId") Integer teamId){
 
@@ -124,7 +124,6 @@ public class TorneoController {
         
         if (torneo!=null){
             torneo.getEquipos().add(equipo);
-            log.debug("TEST STUDENT-COURSE == "+ torneo.getEquipos().add(equipo));
             torneoService.save(torneo);
         }
         return "redirect:/listTournament";

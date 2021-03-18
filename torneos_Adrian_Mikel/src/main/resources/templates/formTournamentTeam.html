@@ -44,7 +44,7 @@
                 <h3 th:utext="${titulo}"></h3>
             </div>
             <form action="#"
-                  th:action="@{/addTeamTournament/}+${torneo.id_torneo}"
+                  th:action="@{/addTeamTournament/}+${torneo.id_torneo}+@{/team}"
                   enctype="multipart/form-data">
                 <div class="col-md-4">
                     <div class="panel panel-default">
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <select class="form-control" name="team">
+                        <select class="form-control" name="teamId">
                             <option th:each="equipo : ${equipos}"
                             th:value="${equipo.id_equipo}"
                             th:text="${equipo.nombre}"></option>
