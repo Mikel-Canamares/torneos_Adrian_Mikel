@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.antartyca.torneos_Adrian_Mikel.models.JugadorModel;
+import com.antartyca.torneos_Adrian_Mikel.services.IEquipoService;
 import com.antartyca.torneos_Adrian_Mikel.services.IJugadorService;
 
 
@@ -26,11 +27,14 @@ public class JugadorController {
 	@Autowired
 	private IJugadorService jugadorService;
 	
+	@Autowired
+	private IEquipoService equipoService;
 	
 	@RequestMapping(value = "/listPlayer", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de jugadores");
 		model.addAttribute("jugadores", jugadorService.findAll());
+		
 		return "listPlayer";
 	}
 	
@@ -39,6 +43,7 @@ public class JugadorController {
 		JugadorModel jugador = new JugadorModel();
 		model.put("jugador", jugador);
 		model.put("titulo", "Formulario de Jugador");
+		model.put("equipos", equipoService.findAll());
 		return "formPlayer";
 	}
 	
@@ -47,6 +52,7 @@ public class JugadorController {
 	public String guardar(@Valid @ModelAttribute("jugador") JugadorModel jugador, BindingResult result, Model model, SessionStatus status) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de Jugador");
+			model.addAttribute("equipos", equipoService.findAll());
 			return "formPlayer";
 		}
 		
@@ -68,6 +74,7 @@ public class JugadorController {
 			return "redirect:/listPlayer";
 		}
 		model.put("jugador", jugador);
+		model.put("equipos", equipoService.findAll());
 		model.put("titulo", "Editar Jugador");
 		model.put("boton", "Editar jugador");
 		return "formPlayer";

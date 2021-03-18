@@ -41,18 +41,8 @@ public class TorneoController {
 	public  String listTournament(Model model) {
 		model.addAttribute("titulo", "Listado de torneos");
 		model.addAttribute("torneos", torneoService.findAll());
-//		String nombres = " ";
-//		List<EquipoModel> equipos = equipoService.findAll();
-//		for (EquipoModel equipo : equipos) {
-//			nombres = nombres + equipo.getNombre();
-//		}
-//		model.addAttribute("equipos", nombres);
+
 		
-		List<TorneoModel> listaTorneos = torneoService.findAll();
-		
-		for(TorneoModel torneo: listaTorneos) {
-			torneo.getEquipos();
-		}
 		return "listTournament";
 	}
 	
