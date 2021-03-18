@@ -65,7 +65,7 @@
 					<td th:text="${torneo.descripcion}"></td>
 					<td th:text="${torneo.ciudad.nombre}"></td> 
 					<td th:text="${torneo.federacion.id_federacion}"></td>
-					<td th:text="${torneo.equipos}"></td>
+					<td th:text="${torneo.equipos[1].nombre}"></td>
 					<td><a class="btn btn-primary btn-xs" th:href="@{/formTournamentTeam/} + ${torneo.id_torneo}" th:text="'añadir equipo'"></a></td>
 					<td><a class="btn btn-primary btn-xs" th:href="@{/formTournament/} + ${torneo.id_torneo}" th:text="'editar'"></a></td>
 					<td><a class="btn btn-danger btn-xs" th:href="@{/deleteTournament/} + ${torneo.id_torneo}" th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres eliminar?');"></a></td>

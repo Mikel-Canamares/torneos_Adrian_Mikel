@@ -48,8 +48,11 @@ public class TorneoController {
 //		}
 //		model.addAttribute("equipos", nombres);
 		
-		String nombres = "";
+		List<TorneoModel> listaTorneos = torneoService.findAll();
 		
+		for(TorneoModel torneo: listaTorneos) {
+			torneo.getEquipos();
+		}
 		return "listTournament";
 	}
 	
