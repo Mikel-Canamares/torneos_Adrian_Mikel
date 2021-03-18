@@ -26,17 +26,17 @@ public class DepartamentoModel {
 	
 	private String descripcion;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="id_federacion")
 	@JsonIgnoreProperties("departamentos")
 	private FederacionModel federacion;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="cod_ciudad")
 	@JsonIgnoreProperties("departamentos")
 	private CiudadModel ciudad;
 	
-	@OneToMany(mappedBy = "departamento")
+	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("departamento")
 	private List<EmpleadoModel> empleados;
 

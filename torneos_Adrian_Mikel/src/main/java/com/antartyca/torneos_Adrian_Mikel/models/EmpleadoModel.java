@@ -25,7 +25,7 @@ public class EmpleadoModel {
 	
 	private Integer telefono;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="cod_departamento")
 	@JsonIgnoreProperties("empleados")
 	private DepartamentoModel departamento;

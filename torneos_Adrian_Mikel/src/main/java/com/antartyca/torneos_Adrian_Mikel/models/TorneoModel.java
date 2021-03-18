@@ -40,12 +40,12 @@ public class TorneoModel  implements Serializable{
 	private List<EquipoModel> equipos;
 	
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "id_federacion")
 	@JsonIgnoreProperties("torneos")
 	private FederacionModel federacion;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "cod_ciudad")
 	@JsonIgnoreProperties("torneos")
 	private CiudadModel ciudad;

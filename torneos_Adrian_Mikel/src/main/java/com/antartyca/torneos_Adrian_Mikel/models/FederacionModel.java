@@ -2,6 +2,7 @@ package com.antartyca.torneos_Adrian_Mikel.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,11 +29,11 @@ public class FederacionModel {
 	
 	private Integer telefono;
 	
-	@OneToMany(mappedBy = "federacion")
+	@OneToMany(mappedBy = "federacion", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("federacion")
 	private List<DepartamentoModel> departamentos;
 	
-	@OneToMany(mappedBy = "federacion")
+	@OneToMany(mappedBy = "federacion", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("federacion")
 	private  List<TorneoModel> torneos;
 	
