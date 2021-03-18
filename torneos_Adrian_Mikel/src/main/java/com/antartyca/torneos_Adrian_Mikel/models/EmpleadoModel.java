@@ -1,6 +1,5 @@
 package com.antartyca.torneos_Adrian_Mikel.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,12 +21,17 @@ public class EmpleadoModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cod_empleado;
 	
+	@NotEmpty
 	private String nombre;
 	
+	@NotEmpty
 	private String direccion;
 	
-	private Integer telefono;
+	@NotEmpty
+	@Pattern(regexp="^[0-9]*$")
+	private String telefono;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="cod_departamento")
 	@JsonIgnoreProperties("empleados")
@@ -34,7 +41,7 @@ public class EmpleadoModel {
 	public Integer getCod_empleado() {
 		return cod_empleado;
 	}
-
+	
 	public void setCod_empleado(Integer cod_empleado) {
 		this.cod_empleado = cod_empleado;
 	}
@@ -55,11 +62,11 @@ public class EmpleadoModel {
 		this.direccion = direccion;
 	}
 
-	public Integer getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(Integer telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
