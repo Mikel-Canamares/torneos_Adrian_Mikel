@@ -21,7 +21,9 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.antartyca.torneos_Adrian_Mikel.models.EquipoModel;
 import com.antartyca.torneos_Adrian_Mikel.models.TorneoModel;
+import com.antartyca.torneos_Adrian_Mikel.services.ICiudadService;
 import com.antartyca.torneos_Adrian_Mikel.services.IEquipoService;
+import com.antartyca.torneos_Adrian_Mikel.services.IFederacionService;
 import com.antartyca.torneos_Adrian_Mikel.services.ITorneoService;
 
 
@@ -36,6 +38,12 @@ public class TorneoController {
 	
 	@Autowired
 	private IEquipoService equipoService;
+	
+	@Autowired
+	private ICiudadService ciudadService;
+	
+	@Autowired
+	private IFederacionService federacionService;
 	
 	@RequestMapping(value = "/listTournament", method = RequestMethod.GET)
 	public  String listTournament(Model model) {
@@ -53,6 +61,8 @@ public class TorneoController {
 		TorneoModel torneo = new TorneoModel();
 		model.put("torneo", torneo);
 		model.put("titulo", "Formulario de Torneo");
+		model.put("federaciones", federacionService.findAll());
+		model.put("ciudades", ciudadService.findAll());
 		return "formTournament";
 	}
 	
@@ -60,6 +70,8 @@ public class TorneoController {
 	public String saveTournament(@Valid @ModelAttribute("torneo") TorneoModel torneo, BindingResult result, Model model, SessionStatus status) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de Torneo");
+			model.addAttribute("federaciones", federacionService.findAll());
+			model.addAttribute("ciudades", ciudadService.findAll());
 			return "formTournament";
 		}
 		
@@ -81,6 +93,8 @@ public class TorneoController {
 			return "redirect:/listTournament";
 		}
 		model.put("torneo", torneo);
+		model.put("federaciones", federacionService.findAll());
+		model.put("ciudades", ciudadService.findAll());
 		model.put("titulo", "Editar Torneo");
 		return "formTournament";
 	}

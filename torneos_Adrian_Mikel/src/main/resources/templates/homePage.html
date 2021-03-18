@@ -8,46 +8,46 @@
 </head>
 <body>
 
-
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Spring Boot</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" th:href="@{/}">Home
-				</a></li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listTeam}">Equipos</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listPlayer}">Jugadores</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listTournament}">Torneos</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listCity}">Ciudades</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listFederation}">Federaciones</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listDepartment}">Departamentos</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listEmployer}">Empleados</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
-
-
+<!-- Insertamos el menu -->
+<nav th:insert="navbarFragment::navbar">
+</nav>
 
 <div class="container">
 	
-<h1>Proyecto Torneos</h1>
-	</div>
-
+	<h1 class="">Proyecto Torneos</h1>
+	<h3 class="mt-4">Intrucciones creacion y borrado de datos</h3>
+	<ul>
+		<li class="mb-2">
+			Para crear las tablas debes mirar antes si se necesita algun dato de otra tabla, por ejemplo, para crear un departamento 
+			necesitas crear previamente una ciudad y una federacion. Al escoger cualquiera de estos ultimos valores tienes un desplegable
+		</li>
+			
+		<li class="mb-2">
+			Si intentas crear cualquier tupla sin introducir algun campo obligatorio te saltará un mensaje en rojo diciendote que 
+			debes rellenar ese campo
+		</li>
+		
+		<li class="mb-2">
+			En los campos de teléfono solo te permite introducir numeros, si introduces cualquier otro caracter te saltara 
+			un mensaje de error en rojo 
+		</li>
+		
+		<li class="mb-2">
+			Para añadir equipos a un torneo debes primero crear un torneo, despues darle al boton de "añadir equipos", en la pantalla
+			que se muestra podrás ir seleccionando los equipos disponibles creados para agregarlos
+		</li>
+		
+		<li>
+			Puedes borrar cualquier fila, si borras por ejemplo una ciudad, que es una tabla cuya clave se propaga en muchas otras, las 
+			tuplas de las tablas donde se haya propagado la clave de ciudad se borrarán
+	</ul>
+	
+	<h4>URL del repositorio en GitHub</h4>
+	<a href="https://github.com/Mikel-Canamares/torneos_Adrian_Mikel.git" target="blank">Enlace al Repositorio</a>
+	
+	
+</div>
+	
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
 
