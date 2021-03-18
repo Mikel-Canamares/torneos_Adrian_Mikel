@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -23,6 +24,7 @@ public class JugadorModel implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_jugador;
 	
+	@NotEmpty
 	private String dni;
 	
 	private String nombre;

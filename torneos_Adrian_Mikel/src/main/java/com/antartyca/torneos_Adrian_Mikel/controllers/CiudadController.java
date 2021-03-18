@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,7 +47,7 @@ public class CiudadController {
 	}
 	
 	@RequestMapping(value = "/formCity", method = RequestMethod.POST)
-	public String saveCity(@Valid CiudadModel ciudad, BindingResult result, Model model, SessionStatus status) {
+	public String saveCity(@Valid @ModelAttribute("ciudad") CiudadModel ciudad, BindingResult result, Model model, SessionStatus status) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de ciudad");
 			return "formCity";
