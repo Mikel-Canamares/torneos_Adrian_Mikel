@@ -8,39 +8,9 @@
 </head>
 <body>
 
-
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Spring Boot</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" th:href="@{/}">Home
-				</a></li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listTeam}">Equipos</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listPlayer}">Jugadores</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listTournament}">Torneos</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listCity}">Ciudades</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listFederation}">Federaciones</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listDepartment}">Departamentos</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listEmployer}">Empleados</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
-
-
+<!-- Insertamos el menu -->
+<nav th:insert="navbarFragment::navbar">
+</nav>
 
 
 <div class="container">
@@ -70,6 +40,7 @@
 				</div>
 			</div>
 			
+<<<<<<< HEAD
 		<!--  	<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Cod Ciudad</label>
 				<div class="col-sm-6">
@@ -78,6 +49,17 @@
 						class="form-text text-danger"
 						th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></small>
 				</div>
+=======
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Ciudad</label>
+				<div class="col-md-6">
+                     <select class="form-control" name="cityId" th:field="*{ciudad}">
+                         <option th:each="ciudad : ${ciudades}"
+                         th:value="${ciudad.cod_ciudad}"
+                         th:text="${ciudad.nombre}"></option>
+                     </select>
+                 </div>
+>>>>>>> 3e31276a613d4aa08b8048a3a724afba4279e1c3
 			</div>
 			-->
 			<div class="form-group row">
@@ -93,13 +75,14 @@
 			
 			
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Cod Federacion</label>
-				<div class="col-sm-6">
-					<input type="text" th:field="*{federacion}" class="form-control"
-						th:errorclass="'form-control alert-danger'" /> <small
-						class="form-text text-danger"
-						th:if="${#fields.hasErrors('federacion')}" th:errors="*{federacion}"></small>
-				</div>
+				<label class="col-sm-2 col-form-label">Federacion</label>
+				<div class="col-md-6">
+                     <select class="form-control" name="federationId" th:field="*{federacion}">
+                         <option th:each="federacion : ${federaciones}"
+                         th:value="${federacion.id_federacion}"
+                         th:text="${federacion.nombre}"></option>
+                     </select>
+                 </div>
 			</div>
 			<input type="hidden" th:field="*{id_torneo}" /> 
 				

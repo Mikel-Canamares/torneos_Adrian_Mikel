@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.antartyca.torneos_Adrian_Mikel.models.EmpleadoModel;
+import com.antartyca.torneos_Adrian_Mikel.services.IDepartamentoService;
 import com.antartyca.torneos_Adrian_Mikel.services.IEmpleadoService;
 
 
@@ -25,6 +26,9 @@ public class EmpleadoController {
 	
 	@Autowired
 	private IEmpleadoService empleadoService;
+	
+	@Autowired
+	private IDepartamentoService departamentoService;
 	
 	@RequestMapping(value = "/listEmployer", method = RequestMethod.GET)
 	public  String listEmployer(Model model) {
@@ -44,6 +48,7 @@ public class EmpleadoController {
 		EmpleadoModel empleado = new EmpleadoModel();
 		model.put("empleado", empleado);
 		model.put("titulo", "Formulario de empleado");
+		model.put("departamentos", departamentoService.findAll());
 		return "formEmployer";
 	}
 	
@@ -51,6 +56,7 @@ public class EmpleadoController {
 	public String saveEmployer(@Valid @ModelAttribute("empleado") EmpleadoModel empleado, BindingResult result, Model model, SessionStatus status) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de empleado");
+			model.addAttribute("departamentos", departamentoService.findAll());
 			return "formEmployer";
 		}
 		
@@ -72,6 +78,7 @@ public class EmpleadoController {
 			return "redirect:/listEmployer";
 		}
 		model.put("empleado", empleado);
+		model.put("departamentos", departamentoService.findAll());
 		model.put("titulo", "Editar empleado");
 		return "formEmployer";
 	}

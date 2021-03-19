@@ -45,7 +45,10 @@ public class TorneoController {
 	@Autowired
 	private IFederacionService federacionService;
 	
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 3e31276a613d4aa08b8048a3a724afba4279e1c3
 	@RequestMapping(value = "/listTournament", method = RequestMethod.GET)
 	public  String listTournament(Model model) {
 		model.addAttribute("titulo", "Listado de torneos");
@@ -62,6 +65,10 @@ public class TorneoController {
 		TorneoModel torneo = new TorneoModel();
 		model.put("torneo", torneo);
 		model.put("titulo", "Formulario de Torneo");
+<<<<<<< HEAD
+=======
+		model.put("federaciones", federacionService.findAll());
+>>>>>>> 3e31276a613d4aa08b8048a3a724afba4279e1c3
 		model.put("ciudades", ciudadService.findAll());
 		return "formTournament";
 	}
@@ -70,6 +77,10 @@ public class TorneoController {
 	public String saveTournament(@Valid @ModelAttribute("torneo") TorneoModel torneo, BindingResult result, Model model, SessionStatus status) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de Torneo");
+<<<<<<< HEAD
+=======
+			model.addAttribute("federaciones", federacionService.findAll());
+>>>>>>> 3e31276a613d4aa08b8048a3a724afba4279e1c3
 			model.addAttribute("ciudades", ciudadService.findAll());
 			return "formTournament";
 		}
@@ -92,6 +103,10 @@ public class TorneoController {
 			return "redirect:/listTournament";
 		}
 		model.put("torneo", torneo);
+<<<<<<< HEAD
+=======
+		model.put("federaciones", federacionService.findAll());
+>>>>>>> 3e31276a613d4aa08b8048a3a724afba4279e1c3
 		model.put("ciudades", ciudadService.findAll());
 		model.put("titulo", "Editar Torneo");
 		return "formTournament";

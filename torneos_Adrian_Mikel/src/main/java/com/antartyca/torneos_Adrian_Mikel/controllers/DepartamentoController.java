@@ -17,13 +17,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.antartyca.torneos_Adrian_Mikel.models.DepartamentoModel;
+import com.antartyca.torneos_Adrian_Mikel.services.ICiudadService;
 import com.antartyca.torneos_Adrian_Mikel.services.IDepartamentoService;
+import com.antartyca.torneos_Adrian_Mikel.services.IFederacionService;
 
 @Controller
 public class DepartamentoController {
 	
 	@Autowired
 	private IDepartamentoService departamentoService;
+	
+	@Autowired
+	private ICiudadService ciudadService;
+	
+	@Autowired
+	private IFederacionService federacionService;
 	
 	@RequestMapping(value = "/listDepartment", method = RequestMethod.GET)
 	public  String listDepartment(Model model) {
@@ -43,6 +51,8 @@ public class DepartamentoController {
 		DepartamentoModel departamento = new DepartamentoModel();
 		model.put("departamento", departamento);
 		model.put("titulo", "Formulario de departamento");
+		model.put("ciudades", ciudadService.findAll());
+		model.put("federaciones", federacionService.findAll());
 		return "formDepartment";
 	}
 	
@@ -50,6 +60,8 @@ public class DepartamentoController {
 	public String saveDepartment(@Valid @ModelAttribute("departamento") DepartamentoModel departamento, BindingResult result, Model model, SessionStatus status) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de departamento");
+			model.addAttribute("ciudades", ciudadService.findAll());
+			model.addAttribute("federaciones", federacionService.findAll());
 			return "formDepartment";
 		}
 		
@@ -71,6 +83,8 @@ public class DepartamentoController {
 			return "redirect:/listDepartment";
 		}
 		model.put("departamento", departamento);
+		model.put("ciudades", ciudadService.findAll());
+		model.put("federaciones", federacionService.findAll());
 		model.put("titulo", "Editar departamento");
 		return "formDepartment";
 	}
