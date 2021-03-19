@@ -41,11 +41,6 @@ public class EquipoController {
 		return "listTeam";
 	}
 	
-	//Prueba para el postman
-	@RequestMapping(value = "/listTeamData", method = RequestMethod.GET)
-	public  @ResponseBody List<EquipoModel> listTeamData(Model model) {
-		return equipoService.findAll();
-	}
 	
 	@RequestMapping(value = "/formTeam")
 	public String createTeam(Map<String, Object> model) {

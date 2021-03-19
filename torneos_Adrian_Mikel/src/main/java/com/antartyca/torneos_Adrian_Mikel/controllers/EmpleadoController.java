@@ -37,11 +37,6 @@ public class EmpleadoController {
 		return "listEmployer";
 	}
 	
-	//Prueba para el postman
-	@RequestMapping(value = "/listEmployerData", method = RequestMethod.GET)
-	public  @ResponseBody List<EmpleadoModel> listEmployerData(Model model) {
-		return empleadoService.findAll();
-	}
 	
 	@RequestMapping(value = "/formEmployer")
 	public String createEmployer(Map<String, Object> model) {

@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <title th:text="${titulo}">Insert title here</title>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 </head>
 <body>
 	<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand p-2" href="#">Spring Boot</a>
+		<a class="navbar-brand pl-2" href="#">Spring Boot</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -35,5 +35,8 @@
 			</ul>
 		</div>
 	</nav>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

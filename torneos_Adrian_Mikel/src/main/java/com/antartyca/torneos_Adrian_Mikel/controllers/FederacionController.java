@@ -33,11 +33,6 @@ public class FederacionController {
 		return "listFederation";
 	}
 	
-	//Prueba para el postman
-	@RequestMapping(value = "/listFederationData", method = RequestMethod.GET)
-	public  @ResponseBody List<FederacionModel> listFederationData(Model model) {
-		return federacionService.findAll();
-	}
 	
 	@RequestMapping(value = "/formFederation")
 	public String createFederation(Map<String, Object> model) {

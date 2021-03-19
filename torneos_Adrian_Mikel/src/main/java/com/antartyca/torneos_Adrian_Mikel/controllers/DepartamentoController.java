@@ -40,11 +40,6 @@ public class DepartamentoController {
 		return "listDepartment";
 	}
 	
-	//Prueba para el postman
-	@RequestMapping(value = "/listDepartmentData", method = RequestMethod.GET)
-	public  @ResponseBody List<DepartamentoModel> listDepartmentData(Model model) {
-		return departamentoService.findAll();
-	}
 	
 	@RequestMapping(value = "/formDepartment")
 	public String createDepartment(Map<String, Object> model) {

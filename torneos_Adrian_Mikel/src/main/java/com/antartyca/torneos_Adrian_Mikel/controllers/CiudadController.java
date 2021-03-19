@@ -30,13 +30,7 @@ public class CiudadController {
 		model.addAttribute("titulo", "Listado de ciudades");
 		model.addAttribute("ciudades", ciudadService.findAll());
 		return "listCity";
-	}
-	
-	//Prueba para el postman
-	@RequestMapping(value = "/listCityData", method = RequestMethod.GET)
-	public  @ResponseBody List<CiudadModel> listCityData(Model model) {
-		return ciudadService.findAll();
-	}
+	}	
 	
 	@RequestMapping(value = "/formCity")
 	public String createCity(Map<String, Object> model) {

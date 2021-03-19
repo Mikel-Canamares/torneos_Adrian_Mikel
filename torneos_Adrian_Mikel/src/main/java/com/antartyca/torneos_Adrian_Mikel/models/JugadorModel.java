@@ -2,10 +2,7 @@ package com.antartyca.torneos_Adrian_Mikel.models;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
