@@ -25,12 +25,18 @@ public class CiudadController {
 	@Autowired
 	private ICiudadService ciudadService;
 	
+	
+	
+	//Carga la lista de ciudades
+	
 	@RequestMapping(value = "/listCity", method = RequestMethod.GET)
 	public  String listCity(Model model) {
 		model.addAttribute("titulo", "Listado de ciudades");
 		model.addAttribute("ciudades", ciudadService.findAll());
 		return "listCity";
 	}	
+	
+	//Carga el formulario de ciudad
 	
 	@RequestMapping(value = "/formCity")
 	public String createCity(Map<String, Object> model) {
@@ -39,6 +45,8 @@ public class CiudadController {
 		model.put("titulo", "Formulario de ciudad");
 		return "formCity";
 	}
+	
+	//Recupera los datos del formulario y los guarda en la BBDD
 	
 	@RequestMapping(value = "/formCity", method = RequestMethod.POST)
 	public String saveCity(@Valid @ModelAttribute("ciudad") CiudadModel ciudad, BindingResult result, Model model, SessionStatus status) {
@@ -53,6 +61,7 @@ public class CiudadController {
 	}
 	
 
+	//Carga el formularion con los datos de una ciudad guardada anteriormente
 	
 	@RequestMapping(value="/formCity/{id}")
 	public String editCity(@PathVariable(value="id") Integer id, Map<String, Object> model) {
@@ -69,6 +78,7 @@ public class CiudadController {
 		return "formCity";
 	}
 	
+	//Elimina una ciudad
 
 	@RequestMapping(value="/deleteCity/{id}")
 	public String deleteCity(@PathVariable(value="id") Integer id) {

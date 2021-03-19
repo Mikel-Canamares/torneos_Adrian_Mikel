@@ -8,6 +8,8 @@ INTRUCCIONES
 
 4-->La creacion de los datos de las tablas está explicado en la página Home 
 
+5-->El funcionamiento de los controladores está especificado en el fichero CiudadController.java
+
 
 !!!!!NOTA IMPORTANTE!!!!!
 
