@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title th:text="${titulo}">Insert title here</title>
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -40,28 +40,6 @@
 				</div>
 			</div>
 			
-<<<<<<< HEAD
-		<!--  	<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Cod Ciudad</label>
-				<div class="col-sm-6">
-					<input type="text" th:field="*{ciudad}" class="form-control"
-						th:errorclass="'form-control alert-danger'" /> <small
-						class="form-text text-danger"
-						th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></small>
-				</div>
-=======
-			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Ciudad</label>
-				<div class="col-md-6">
-                     <select class="form-control" name="cityId" th:field="*{ciudad}">
-                         <option th:each="ciudad : ${ciudades}"
-                         th:value="${ciudad.cod_ciudad}"
-                         th:text="${ciudad.nombre}"></option>
-                     </select>
-                 </div>
->>>>>>> 3e31276a613d4aa08b8048a3a724afba4279e1c3
-			</div>
-			-->
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Cod Ciudad</label>
 			<div class="col-md-6">
@@ -95,7 +73,7 @@
 	</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
